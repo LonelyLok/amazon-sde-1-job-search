@@ -16,9 +16,11 @@ function App() {
   const [page, setPage] = useState(1);
   const jobsPerPage = 10;
 
+  const host = import.meta.env.VITE_IS_DOCKER === 'true' ? 'http://localhost' : 'http://localhost:8080';
+
   const getJobs = async (page: number) => {
     try {
-      const response = await fetch('http://localhost:8080/proxy-get', {
+      const response = await fetch(`${host}/api/proxy-get`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

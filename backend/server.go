@@ -130,17 +130,20 @@ func init() {
 	err := loadEnv(".env")
 	if err != nil {
 		fmt.Println(err)
-		os.Exit(1)
+		// os.Exit(1)
 	}
 }
 
 func main() {
 	mux := http.NewServeMux()
-	mux.HandleFunc("/", handler)
-	mux.HandleFunc("/proxy-get", handleProxyGetRequest)
+	mux.HandleFunc("/api/health", handler)
+	mux.HandleFunc("/api/proxy-get", handleProxyGetRequest)
 	fmt.Println("Starting server at port 8080")
+
+	clientHost := "localhost"
+	clientOrigin := fmt.Sprintf("http://%s:5173", clientHost)
 	handler := cors.New(cors.Options{
-		AllowedOrigins:   []string{"http://localhost:5173"}, // Allow all origins
+		AllowedOrigins:   []string{clientOrigin}, // Allow all origins
 		AllowCredentials: true,
 		AllowedMethods:   []string{"GET", "POST", "PUT", "DELETE", "OPTIONS"},
 		AllowedHeaders:   []string{"Content-Type", "Authorization"},
