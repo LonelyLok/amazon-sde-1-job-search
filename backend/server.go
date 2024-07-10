@@ -12,7 +12,7 @@ import (
 	"github.com/rs/cors"
 )
 
-func handler(w http.ResponseWriter, r *http.Request) {
+func healthHandler(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "Hello, World!")
 }
 
@@ -136,14 +136,14 @@ func init() {
 
 func main() {
 	mux := http.NewServeMux()
-	mux.HandleFunc("/api/health", handler)
+	mux.HandleFunc("/api/health", healthHandler)
 	mux.HandleFunc("/api/proxy-get", handleProxyGetRequest)
 	fmt.Println("Starting server at port 8080")
 
 	clientHost := "localhost"
 	clientOrigin := fmt.Sprintf("http://%s:5173", clientHost)
 	handler := cors.New(cors.Options{
-		AllowedOrigins:   []string{clientOrigin}, // Allow all origins
+		AllowedOrigins:   []string{clientOrigin},
 		AllowCredentials: true,
 		AllowedMethods:   []string{"GET", "POST", "PUT", "DELETE", "OPTIONS"},
 		AllowedHeaders:   []string{"Content-Type", "Authorization"},

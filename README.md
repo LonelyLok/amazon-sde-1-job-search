@@ -1,4 +1,4 @@
-## Amazon SDE 1 Jobs
+# Amazon SDE 1 Jobs
 
 simple web app that show all US amazon software engineer job that have less than 1 year experience (SDE 1)
 
@@ -10,7 +10,7 @@ Amazon don't really have a lot of SDE1 open in my area and my interview result o
 
 The reality is that very likely I will not find a SDE1 position in my area in the next 12 months but I like copium.
 
-### How to run
+## How to run
 
 You can run with docker or without docker which mean you either need to have docker installed or have go, node, vite, npm ready installed.
 
@@ -29,5 +29,5 @@ Run without docker:
 - then it should work on `localhost:5173`
 
 
-### What it Look like
+## What it Look like
 ![Screenshot 2024-07-09 233536](https://github.com/LonelyLok/amazon-sde-1-job-search/assets/40349145/efcb3d3d-99ce-4723-b067-259c44e15d91)
